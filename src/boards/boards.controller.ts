@@ -1,4 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Patch,
+    Post,
+    Put,
+} from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import type { Board, BoardStatus } from './board.model';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -10,7 +19,7 @@ export class BoardsController {
     //     this.boardsService = boardsService;
     // }
     // 위 코드 축약
-    constructor(private boardsService: BoardsService){}
+    constructor(private boardsService: BoardsService) {}
 
     @Get()
     getAllBoards(): Board[] {
@@ -26,23 +35,22 @@ export class BoardsController {
     // }
 
     @Post()
-    createBoard(createBoardDto:CreateBoardDto): Board {
+    createBoard(createBoardDto: CreateBoardDto): Board {
         return this.boardsService.createBoard(createBoardDto);
     }
-    
+
     @Get('/:id')
-    getBoardById(@Param('id') id:string):Board | undefined {
-        return this.boardsService.getBoardById(id)
-    }   
-    
+    getBoardById(@Param('id') id: string): Board | undefined {
+        return this.boardsService.getBoardById(id);
+    }
+
     @Delete('/:id')
-    deleteBoard(@Param('id') id:string): void{
+    deleteBoard(@Param('id') id: string): void {
         this.boardsService.deleteBoard(id);
     }
 
     @Patch('/:id/status')
-    putBoard(@Param('id')id:string,@Body('status') status:BoardStatus){
+    putBoard(@Param('id') id: string, @Body('status') status: BoardStatus) {
         return this.boardsService.putBoard(id, status);
     }
-
 }
