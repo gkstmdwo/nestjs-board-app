@@ -13,4 +13,11 @@ export class AuthController {
     ): Promise<User> {
         return this.authService.signUp(authCredentialsDto);
     }
+
+    @Post('/signin')
+    signIn(
+        @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto,
+    ): Promise<string> {
+        return this.authService.singIn(authCredentialsDto);
+    }
 }
