@@ -1,0 +1,9 @@
+db:
+    host: 'localhost'
+    username: 'postgres'
+    password: 'postgres'
+    synchronize: true
+    # synchronize: true = 시작할 떄마다 엔티티 확인 후 테이블 생성
+
+jwt:
+    secret: 'Secret1234'
